@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Booking</title>
+    <%- include('../cdn.ejs')%>
+  </head>
+  <body>
+    <div class="container-fluid m-0 p-0">
+      <div class="row m-0 p-0">
+        <div
+          class="col-lg-2 col-md-4 col-12 p-5 text-center"
+          style="background-color: #191928; height: 60vh"
+        >
+          <h3 class="text-warning fw-bold mb-4">Restoran</h3>
+
+          <a href="/admin" class="nav-link text-light fw-bold my-3">Services</a>
+          <a href="/admin/team" class="nav-link text-light fw-bold my-3"
+            >Team</a
+          >
+          <a href="/admin/contact" class="nav-link text-light fw-bold my-3"
+            >Contact</a
+          >
+
+          <a href="/admin/book" class="nav-link text-warning fw-bold my-3"
+            >Booking Details</a
+          >
+          <a href="/admin/user" class="nav-link text-light fw-bold my-3"
+            >User Information</a
+          >
+          <a href="/admin/menu" class="nav-link text-light fw-bold my-3"
+            >Menu</a
+          >
+          <a href="/admin/logout" class="nav-link text-light fw-bold my-3"
+            >Logout</a
+          >
+        </div>
+
+        <div
+          class="col-lg-10 col-md-8 col-12 p-5"
+          style="background-color: #191928; border-left: 10px solid white"
+        >
+          <!-- booking -->
+          <div class="row m-0 p-2" id="book">
+            <button class="btn btn-warning text-light m-auto">
+              Booking User Information
+            </button>
+
+            <table
+              class="table table-hover table-bordered table-striped bg-light my-4"
+            >
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>User Id</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Booking Date</th>
+                  <th>Booking Time</th>
+                  <th>No of People</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% data3.map((val)=>{%>
+                <tr>
+                  <td><%= val.Id%></td>
+                  <td><%= val.user_id%></td>
+                  <td><%= val.name%></td>
+                  <td><%= val.email%></td>
+                  <td>
+                    <%= new Date( val.booking_date).toLocaleDateString() %>
+                  </td>
+                  <td><%= val.booking_time%></td>
+                  <td><%= val.no%></td>
+                  <td>
+                    <a href="/admin/del_book/<%= val.Id%>"
+                      ><i class="fa fa-trash text-danger fw-bold"></i
+                    ></a>
+                  </td>
+                </tr>
+                <%})%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
